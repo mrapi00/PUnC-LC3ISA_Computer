@@ -227,7 +227,7 @@ module PUnCDatapath(
 	always @(*) begin	//ALU Muxes
 		//alu_first_val_sel
 		case (alu_first_val_sel)
-			`alu_first_val_Sel_R0_Data: begin
+			`ALU_FIRST_VAL_Sel_R0_Data: begin
 			  alu_first_val = rf_r0_data;
 			end
 			`alu_first_val_4_0: begin

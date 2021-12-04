@@ -45,7 +45,7 @@ module PUnCControl(
 	output reg			nzp_clr,
 
 	//ALU Controls
-	output reg	[1:0]	ALU_sel,
+	output reg	[1:0]	alu_sel,
 	output reg			alu_first_val
 );
 
@@ -83,7 +83,7 @@ module PUnCControl(
 		prev_ld 			= 1'd0;
 		nzp_ld 				= 1'd0;
 		nzp_clr 			= 1'd0;
-		ALU_sel 			= 2'd0;
+		alu_sel 			= 2'd0;
 		alu_first_val 			= 1'd0;
 
 		// Add your output logic here
@@ -113,11 +113,11 @@ module PUnCControl(
 						RF_R0_addr_sel 	= `RF_R0_Addr_Sel_2_0;
 						RF_R1_rd		= 1'b1;
 						nzp_ld			= 1'b1;
-						ALU_sel			= `ALU_Sel_ADD;
+						alu_sel			= `ALU_Sel_ADD;
 
 						if(ir[5] == 0) begin
 							RF_R0_rd 	= 1'b1;
-							alu_first_val	= `alu_first_val_Sel_R0_Data;
+							alu_first_val	= `ALU_FIRST_VAL_Sel_R0_Data;
 						end
 						
 						else begin
@@ -132,12 +132,12 @@ module PUnCControl(
 						RF_W_wr 		= 1'b1;
 						RF_R1_rd		= 1'b1;
 						nzp_ld			= 1'b1;
-						ALU_sel			= `ALU_Sel_AND;
+						alu_sel			= `ALU_Sel_AND;
 
 						if(ir[5] == 0) begin
 							RF_R0_rd 	= 1'b1;
 							RF_R0_addr_sel 	= `RF_R0_Addr_Sel_2_0;
-							alu_first_val	= `alu_first_val_Sel_R0_Data;
+							alu_first_val	= `ALU_FIRST_VAL_Sel_R0_Data;
 						end
 						
 						else begin
@@ -206,7 +206,7 @@ module PUnCControl(
 						RF_W_wr 		= 1'b1;
 						RF_R1_rd		= 1'b1;
 						nzp_ld			= 1'b1;
-						ALU_sel			= `ALU_Sel_NOT_B;
+						alu_sel			= `ALU_Sel_NOT_B;
 					end
 
 					`OC_ST:begin

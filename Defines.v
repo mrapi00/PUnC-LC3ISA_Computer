@@ -60,7 +60,7 @@
 `define RF_W_Data_Sel_PC            2'd3
 
  //Selecting ALU first val
-`define alu_first_val_Sel_R0_Data        1'd0  
+`define ALU_FIRST_VAL_Sel_R0_Data        1'd0  
 `define alu_first_val_4_0                1'd1
 
 // ALU Functions

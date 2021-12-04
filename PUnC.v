@@ -21,24 +21,24 @@ module PUnC(
 	//----------------------------------------------------------------------
 	// Interconnect Wires
 	//----------------------------------------------------------------------
-	//Instruction Register Controls
+	//IR
 	wire 			IR_clr;
 	wire			IR_ld;
 	wire	[15:0]	ir;
 
-	//Program Counter Controls
+	//PC 
 	wire			PC_ld;
 	wire			PC_clr;
 	wire			PC_inc;
 	wire	[1:0]	PC_sel;	  
 
-	//Memory Controls
+	//Memory
 	wire			Mem_rd;
 	wire			Mem_wr;
 	wire	[1:0]	Mem_R_addr_sel;
 	wire 	[1:0]	Mem_W_addr_sel;
 
-	//Register File Controls
+	//Register File
 	wire	[1:0]	RF_W_data_sel;
 	wire			RF_W_addr_sel;
 	wire			RF_R0_addr_sel;
@@ -46,16 +46,16 @@ module PUnC(
 	wire			RF_R0_rd;
 	wire			RF_R1_rd;
 
-	//Temp Register Control
+	//Previous Register Control
 	wire 			prev_ld;
 
-	//NZP Circuit Controls
+	//NZP wires
 	wire			nzp_ld;
 	wire			nzp_clr;
 	wire			nzp_true;
 
-	//ALU Controls
-	wire	[1:0]	ALU_sel;
+	//ALU input
+	wire	[1:0]	alu_sel;
 	wire			alu_first_val;
   
 	//----------------------------------------------------------------------
@@ -66,8 +66,6 @@ module PUnC(
 		.rst            	(rst),
 		
 		.ir					(ir),	
-		.nzp_true			(nzp_true),
-		
 		.IR_clr				(IR_clr),
 		.IR_ld				(IR_ld),
 		
@@ -92,8 +90,9 @@ module PUnC(
 		
 		.nzp_ld				(nzp_ld),
 		.nzp_clr			(nzp_clr),
-		
-		.ALU_sel			(ALU_sel),
+		.nzp_true			(nzp_true),
+
+		.alu_sel			(alu_sel),
 		.alu_first_val		(alu_first_val)		
 	);
 
@@ -104,9 +103,7 @@ module PUnC(
 		.clk            	(clk),
 		.rst            	(rst),
 		
-		.ir_to_controller	(ir),
-		.nzp_true			(nzp_true),
-		
+		.ir_to_controller	(ir),		
 		.ir_clr				(IR_clr),
 		.ir_ld				(IR_ld),
 		
@@ -119,6 +116,12 @@ module PUnC(
 		.mem_wr				(Mem_wr),
 		.mem_r_addr_sel		(Mem_R_addr_sel),
 		.mem_w_addr_sel		(Mem_W_addr_sel),
+
+		.mem_debug_addr   	(mem_debug_addr),
+		.rf_debug_addr    	(rf_debug_addr),
+		.mem_debug_data   	(mem_debug_data),
+		.rf_debug_data    	(rf_debug_data),
+		.pc_debug_data    	(pc_debug_data),
 		
 		.rf_w_data_sel		(RF_W_data_sel),
 		.rf_w_addr_sel		(RF_W_addr_sel),
@@ -131,15 +134,10 @@ module PUnC(
 		
 		.nzp_ld				(nzp_ld),
 		.nzp_clr			(nzp_clr),
+		.nzp_true			(nzp_true),
 		
-		.alu_sel			(ALU_sel),
-		.alu_first_val_sel	(alu_first_val),
-
-		.mem_debug_addr   	(mem_debug_addr),
-		.rf_debug_addr    	(rf_debug_addr),
-		.mem_debug_data   	(mem_debug_data),
-		.rf_debug_data    	(rf_debug_data),
-		.pc_debug_data    	(pc_debug_data)
+		.alu_sel			(alu_sel),
+		.alu_first_val_sel	(alu_first_val)
 	);
 
 endmodule
