@@ -19,11 +19,70 @@ module PUnCDatapath(
 	output wire [15:0] pc_debug_data,
 
 	// Add more ports here
+	input wire 			pc_ld,
+	input wire 			pc_clr,
+	input wire 			pc_inc,
+	input wire [1:0] 	pc_sel,
+
+	input wire 			ir_ld,
+	input wire 			ir_clr,
+
+	input wire 			mem_rd,
+	input wire 			mem_wr,
+	input wire [1:0] 	mem_r_addr_sel,
+	input wire [1:0] 	mem_w_addr_sel,
+
+	input wire [1:0] 	rf_w_data_sel,
+	input wire 			rf_w_addr_sel,
+	input wire 			rf_w_wr,
+	
+	input wire 			rf_rp_addr_sel,
+	input wire 			rf_rp_rd,
+	input wire 			rf_rq_rd,
+
+	input wire 			temp_ld,
+
+	input wire 			nzp_ld,
+	input wire 			nzp_clr,
+
+	input wire [1:0] 	alu_sel,
+	input wire 			alu_first_val_sel,
+
+	output wire 		nzp_match,
+	output wire [15:0] 	ir_out
+
 );
 
 	// Local Registers
 	reg  [15:0] pc;
 	reg  [15:0] ir;
+
+	reg  	[15:0] 		pc_w_data;
+
+	reg 	[15:0]		ir_sext_10_0;
+	reg 	[15:0]		ir_sext_8_0;
+	reg 	[15:0]		ir_sext_5_0;
+	reg 	[15:0] 		ir_sext_4_0;
+
+	reg 	[15:0] 		temp;
+
+	reg 	[15:0] 		dmem_r_addr;
+	reg 	[15:0] 		dmem_w_addr;
+	wire 	[15:0] 		dmem_r_data;
+
+	reg 	[2:0] 		rf_w_addr;
+	reg 	[15:0]		rf_w_data;
+	reg 	[2:0]		rf_rp_addr;
+	wire 	[15:0]		rf_rp_data;
+	wire 	[15:0]		rf_rq_data;
+
+	reg n;	
+	reg z; 
+	reg p;
+  
+	reg [15:0] alu_first_val;
+	reg [15:0] alu_out;
+
 
 	// Declare other local wires and registers here
 
