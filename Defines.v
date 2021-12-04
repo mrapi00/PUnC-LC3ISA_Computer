@@ -35,15 +35,15 @@
 `define PC_Data_Sel_RF_R1_Data      2'd2
 
 //Selecting Mem_R_Addr
-`define DMem_R_Addr_Sel_PC          2'd0   
-`define DMem_R_Addr_Sel_PC_8_0      2'd1
-`define DMem_R_Addr_Sel_RF_R0_Data  2'd2
-`define DMem_R_Addr_Sel_RF_R1_5_0   2'd3
+`define Mem_R_Addr_Sel_PC          2'd0   
+`define Mem_R_Addr_Sel_PC_8_0      2'd1
+`define Mem_R_Addr_Sel_RF_R0_Data  2'd2
+`define Mem_R_Addr_Sel_RF_R1_5_0   2'd3
 
 //Selecting Mem_W_Addr
-`define DMem_W_Addr_Sel_PC_8_0      2'd0   
-`define DMem_W_Addr_Sel_Temp_Data   2'd1
-`define DMem_W_Addr_Sel_RF_R1_5_0   2'd2
+`define Mem_W_Addr_Sel_PC_8_0      2'd0   
+`define Mem_W_Addr_Sel_prev_Data   2'd1
+`define Mem_W_Addr_Sel_RF_R1_5_0   2'd2
 
 //Selecting RF_W_Addr
 `define RF_W_Addr_Sel_R7            1'd0   
@@ -56,15 +56,15 @@
 //Selecting RF_W_Data_ALU
 `define RF_W_Data_Sel_ALU           2'd0   
 `define RF_W_Data_Sel_PC_8_0        2'd1
-`define RF_W_Data_Sel_DMem_R        2'd2
+`define RF_W_Data_Sel_Mem_R        2'd2
 `define RF_W_Data_Sel_PC            2'd3
 
  //Selecting ALU first val
-`define ALU_In_A_Sel_R0_Data        1'd0  
-`define ALU_In_A_4_0                1'd1
+`define alu_first_val_Sel_R0_Data        1'd0  
+`define alu_first_val_4_0                1'd1
 
 // ALU Functions
-`define ALU_Fn_Sel_PassA            2'd0 
-`define ALU_Fn_Sel_ADD              2'd1
-`define ALU_Fn_Sel_AND              2'd2
-`define ALU_Fn_Sel_NOT_B            2'd3
+`define ALU_Sel_PassA            2'd0 
+`define ALU_Sel_ADD              2'd1
+`define ALU_Sel_AND              2'd2
+`define ALU_Sel_NOT_B            2'd3
