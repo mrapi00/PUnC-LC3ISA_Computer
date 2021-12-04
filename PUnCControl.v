@@ -11,7 +11,7 @@ module PUnCControl(
 
 	// Input Signals from DataPath
 	input [15:0]		ir,
-	input				nzp_match,
+	input				nzp_true,
 
 	//Instruction Register Controls
 	output reg 			IR_clr,
@@ -147,7 +147,7 @@ module PUnCControl(
 					end
 
 					`OC_BR: begin
-						if (nzp_match == 1'b1) begin
+						if (nzp_true == 1'b1) begin
 							PC_ld 	= 1'b1;
 							PC_sel 	= `PC_Data_Sel_PC_8_0;
 						end

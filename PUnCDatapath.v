@@ -157,31 +157,31 @@ module PUnCDatapath(
 	
 	always @(*) begin	//Mem Muxes
 		//R_addr
-		case (Mem_r_addr_sel)
+		case (mem_r_addr_sel)
 			`Mem_R_Addr_Sel_PC : begin
-				Mem_r_addr = pc;
+				mem_r_addr = pc;
 			end
 			`Mem_R_Addr_Sel_PC_8_0: begin
-				Mem_r_addr = pc + ir_sext_8_0;
+				mem_r_addr = pc + ir_sext_8_0;
 			end
 			`Mem_R_Addr_Sel_RF_R0_Data: begin
-				Mem_r_addr = rf_r0_data;
+				mem_r_addr = rf_r0_data;
 			end
 			`Mem_R_Addr_Sel_RF_R1_5_0: begin
-				Mem_r_addr = rf_r1_data + ir_sext_5_0;
+				mem_r_addr = rf_r1_data + ir_sext_5_0;
 			end
 		endcase
 		
 		//W_addr
-		case (Mem_w_addr_sel)
+		case (mem_w_addr_sel)
 			`Mem_W_Addr_Sel_PC_8_0: begin
-				Mem_w_addr = pc + ir_sext_8_0;
+				mem_w_addr = pc + ir_sext_8_0;
 			end
 			`Mem_W_Addr_Sel_prev_Data: begin
-				Mem_w_addr = prev;
+				mem_w_addr = prev;
 			end
 			`Mem_W_Addr_Sel_RF_R1_5_0: begin
-				Mem_w_addr = rf_r1_data + ir_sext_5_0;
+				mem_w_addr = rf_r1_data + ir_sext_5_0;
 			end
 		endcase
 	end	
@@ -206,7 +206,7 @@ module PUnCDatapath(
 			  	rf_w_data = pc + ir_sext_8_0;
 			end
 			`RF_W_Data_Sel_Mem_R: begin
-				rf_w_data = Mem_r_data;
+				rf_w_data = mem_r_data;
 			end
 			`RF_W_Data_Sel_PC: begin
 				rf_w_data = pc;
@@ -256,7 +256,7 @@ module PUnCDatapath(
 
 		//prev
 		if(prev_ld) begin
-		  prev = Mem_r_data;
+		  prev = mem_r_data;
 		end
 
 		//IR input
@@ -264,7 +264,7 @@ module PUnCDatapath(
 		  ir = 16'b0;
 		end
 		else if(ir_ld) begin
-		ir = Mem_r_data;
+		ir = mem_r_data;
 		end
 
 		//NZP input
