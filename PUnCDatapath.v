@@ -48,14 +48,15 @@ module PUnCDatapath(
 	input wire [1:0] 	alu_sel,
 	input wire 			alu_first_val_sel,
 
-	output wire 		nzp_match,
-	output wire [15:0] 	ir_out
+	output wire 		nzp_true,
+	output wire [15:0] 	ir_to_controller
 
 );
 
 	// Local Registers
 	reg  [15:0] pc;
 	reg  [15:0] ir;
+	assign ir_to_controller = ir;
 
 	reg  	[15:0] 		pc_w_data;
 
@@ -66,9 +67,9 @@ module PUnCDatapath(
 
 	reg 	[15:0] 		temp;
 
-	reg 	[15:0] 		dmem_r_addr;
-	reg 	[15:0] 		dmem_w_addr;
-	wire 	[15:0] 		dmem_r_data;
+	reg 	[15:0] 		mem_r_addr;
+	reg 	[15:0] 		mem_w_addr;
+	wire 	[15:0] 		mem_r_data;
 
 	reg 	[2:0] 		rf_w_addr;
 	reg 	[15:0]		rf_w_data;
@@ -79,6 +80,7 @@ module PUnCDatapath(
 	reg n;	
 	reg z; 
 	reg p;
+	assign nzp_true = (ir[11] & n) | (ir[10] & z) | (ir[9] & p);
   
 	reg [15:0] alu_first_val;
 	reg [15:0] alu_out;
@@ -98,12 +100,12 @@ module PUnCDatapath(
 	Memory mem(
 		.clk      (clk),
 		.rst      (rst),
-		.r_addr_0 (),
+		.r_addr_0 (mem_r_addr),
 		.r_addr_1 (mem_debug_addr),
-		.w_addr   (),
-		.w_data   (),
-		.w_en     (),
-		.r_data_0 (),
+		.w_addr   (mem_w_addr),
+		.w_data   (rf_rp_data),
+		.w_en     (mem_wr),
+		.r_data_0 (mem_r_data),
 		.r_data_1 (mem_debug_data)
 	);
 
