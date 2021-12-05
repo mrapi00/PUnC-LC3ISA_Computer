@@ -61,7 +61,7 @@
 
  //Selecting ALU first val
 `define ALU_FIRST_VAL_Sel_R0_Data        1'd0  
-`define alu_first_val_4_0                1'd1
+`define ALU_FIRST_VAL_4_0                1'd1
 
 // ALU Functions
 `define ALU_Sel_PassA            2'd0 

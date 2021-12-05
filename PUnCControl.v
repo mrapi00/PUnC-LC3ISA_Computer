@@ -122,7 +122,7 @@ module PUnCControl(
 						
 						else begin
 							RF_R0_rd	= 1'b0;
-							alu_first_val	= `alu_first_val_4_0;
+							alu_first_val	= `ALU_FIRST_VAL_4_0;
 						end
 					end
 
@@ -142,7 +142,7 @@ module PUnCControl(
 						
 						else begin
 							RF_R0_rd	= 1'b0;
-							alu_first_val	= `alu_first_val_4_0;
+							alu_first_val	= `ALU_FIRST_VAL_4_0;
 						end
 					end
 
@@ -166,8 +166,8 @@ module PUnCControl(
 					end
 
 					`OC_LD:begin
-						Mem_rd 			= 1'b1;
-						Mem_R_addr_sel 	= `Mem_R_Addr_Sel_PC_8_0;
+						Mem_rd 				= 1'b1;
+						Mem_R_addr_sel 		= `Mem_R_Addr_Sel_PC_8_0;
 						RF_W_data_sel 		= `RF_W_Data_Sel_Mem_R;
 						RF_W_addr_sel 		= `RF_W_Addr_Sel_11_9;
 						RF_W_wr 			= 1'b1;
@@ -176,7 +176,7 @@ module PUnCControl(
 
 					`OC_LDI:begin
 						Mem_rd = 1'b1;
-						Mem_R_addr_sel 	= `Mem_R_Addr_Sel_PC_8_0;
+						Mem_R_addr_sel 		= `Mem_R_Addr_Sel_PC_8_0;
 						RF_W_data_sel 		= `RF_W_Data_Sel_Mem_R;
 						RF_W_addr_sel 		= `RF_W_Addr_Sel_11_9;
 						RF_W_wr 			= 1'b1;
@@ -184,8 +184,8 @@ module PUnCControl(
 					end
 
 					`OC_LDR:begin
-						Mem_rd 			= 1'b1;
-						Mem_R_addr_sel 	= `Mem_R_Addr_Sel_RF_R1_5_0;
+						Mem_rd 				= 1'b1;
+						Mem_R_addr_sel 		= `Mem_R_Addr_Sel_RF_R1_5_0;
 						RF_W_data_sel 		= `RF_W_Data_Sel_Mem_R;
 						RF_W_addr_sel 		= `RF_W_Addr_Sel_11_9;
 						RF_W_wr 			= 1'b1;
