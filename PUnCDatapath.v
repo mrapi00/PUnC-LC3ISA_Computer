@@ -241,10 +241,10 @@ module PUnCDatapath(
 			  alu_out = alu_first_val;
 			end
 			`ALU_Sel_ADD: begin
-			  alu_out = rf_r1_data + alu_first_val;
+			  alu_out = alu_first_val + rf_r1_data;
 			end
 			`ALU_Sel_AND: begin
-			  alu_out = rf_r1_data & alu_first_val;
+			  alu_out = alu_first_val & rf_r1_data;
 			end
 			`ALU_Sel_NOT_B: begin
 			  alu_out = ~ rf_r1_data;

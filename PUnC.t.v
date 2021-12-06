@@ -218,6 +218,10 @@ module PUnCTATest;
 		`ASSERT_MEM_EQ(23, 16'd3);
 
 		// ADD YOUR TEST HERE!
+		`START_TEST("fib10");
+		`WAIT_PC_FREEZE;
+		`ASSERT_REG_EQ(2, 16'd99);
+		`ASSERT_MEM_EQ(27, 16'd99);
 
 		$display("\n----------------------------");
 		$display("--- Completed %d Tests  ----", test_cnt);

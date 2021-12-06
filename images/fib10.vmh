@@ -1,0 +1,128 @@
+201B   // LD R0, #27        // fib1 = 1;
+221B   // LD R1, #27        // fib2 = 1;
+241B   // LD R2, #27        // fib3 = 4;
+261B   // LD R3, #27        // fibSequence = userInput;
+2A1B   // LD R5, #27  
+9B7F   // NOT R5, R5        // R5 = -3
+2C1A   // LD R6, #26 
+9DBF   // NOT R6, R6        // R6 = -2
+2E19   // LD R7, #25
+9FFF   // NOT R7, R7        // R7 = -1
+18C5   // ADD R4, R3, R5
+340F   // ST R2, #15
+040D   // BRz #13           // Returns 2 if fibSequence == 3
+18C6   // ADD R4, R3, R6
+320C   // ST R1, #12
+040A   // BRz #10           // Returns 1 if fibSequence == 2
+18C7   // ADD R4, R3, R7
+3009   // ST R0, #9
+0407   // BRz #7            // Returns 1 if fibSequence == 1
+16FD   // ADD R3, R3, #-3   // fibSequence = fibSequence - 3
+1060   // ADD R0, R1, #0    // fib1 = fib2;
+12A0   // ADD R1, R2, #0    // fib2 = fib3;
+1440   // ADD R2, R1, R0    // fib3 = fib2 + fib1
+16FF   // ADD R3, R3, #-1   // fibSequence = fibSequence - 1
+03FB   // BRp #-5           // do-while loop if fibSequence != 0 
+3401   // ST R2, #1         // store R2 into fibNumber
+F000   // HALT
+0000   // 0000 fibNumber (OUTPUT)
+0001   // 0001 fib1
+0001   // 0001 fib2
+0002   // 0002 fib3
+0004   // 0004 fibSequence (USER INPUT)
+0003   // 0003 CONSTANT 3
+0002   // 0002 CONSTANT 2
+0001   // 0001 CONSTANT 1
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
